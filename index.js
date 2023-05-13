@@ -31,12 +31,15 @@ async function run() {
 
     const userCollection = client.db('usersDB').collection('users');
 
+    // 2. "R" (API) from CRUD operations
     app.get('/users', async( req, res) => {
         const cursor = userCollection.find()
         const result = await cursor.toArray();
         res.send(result);
     })
 
+    
+    //  4. "U" (API) from the CRUD service
     app.get('/users/:id', async(req, res) => {
         const id = req.params.id;
         const query = {_id: new ObjectId(id)}
@@ -44,6 +47,7 @@ async function run() {
         res.send(user);
     })
 
+    // 1. "C" (API) from CRUD operations
     app.post('/users', async(req, res) => {
         const user = req.body;
         console.log('new user', user);
@@ -51,6 +55,7 @@ async function run() {
         res.send(result);
     });
 
+    // Put/patch from 
     app.put('/users/:id', async(req, res) =>{
         const id = req.params.id;
         const user = req.body;
@@ -70,6 +75,7 @@ async function run() {
 
     })
 
+    // 3. "D" (API) from CRUD operations
     app.delete('/users/:id', async(req, res) =>{
         const id = req.params.id;
         console.log('please delete from database', id);

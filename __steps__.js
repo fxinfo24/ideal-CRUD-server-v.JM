@@ -8,7 +8,7 @@
  * 4. database > connect > driver > Node > View full code 
  * 5. change the password the uri
  * ----------------------------
- * 1. CREATE --- POST
+ * 1. CREATE --- POST (Server side only)
  * 2. app.post('/users'/ async (req, res) => {})
  * 3. Make the function async to use await inside it
  * 4. Make sure you use the express.json() middleware
